@@ -10,10 +10,16 @@
   }
   gtag('js', new Date());
   gtag('config', 'AW-18530214093');
+  gtag('config', 'G-4PWHY1KK6');
 
   document.addEventListener('click', function (event) {
     const whatsappLink = event.target.closest?.('a[href^="https://wa.me/"]');
     if (whatsappLink) {
+      gtag('event', 'whatsapp_click', {
+        link_url: whatsappLink.href,
+        link_text: (whatsappLink.textContent || '').trim().slice(0, 100),
+        transport_type: 'beacon'
+      });
       gtag('event', 'conversion', {
         send_to: 'AW-18530214093/zAUOCKnduaUdEM3B8oNF'
       });
